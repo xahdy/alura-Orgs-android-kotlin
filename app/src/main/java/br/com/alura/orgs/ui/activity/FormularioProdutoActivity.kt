@@ -1,16 +1,12 @@
 package br.com.alura.orgs.ui.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import br.com.alura.orgs.R
 import br.com.alura.orgs.dao.ProdutosDao
 import br.com.alura.orgs.databinding.ActivityFormularioProdutoBinding
-import br.com.alura.orgs.databinding.FormularioImagemBinding
-import br.com.alura.orgs.extensions.TentaCarregarImagem
+import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.dialog.FormularioImagemDialog
-import coil.load
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity() {
@@ -23,14 +19,14 @@ class FormularioProdutoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        title = "Cadastar produto"
+        title = "Cadastrar produto"
         configuraBotaoSalvar()
-        binding.activityFormularioProdutoImageView.setOnClickListener {
+        binding.activityFormularioProdutoImagem.setOnClickListener {
             FormularioImagemDialog(this)
                 .mostra(url) { imagem ->
-                url = imagem
-                binding.activityFormularioProdutoImageView.TentaCarregarImagem(url)
-            }
+                    url = imagem
+                    binding.activityFormularioProdutoImagem.tentaCarregarImagem(url)
+                }
         }
     }
 
