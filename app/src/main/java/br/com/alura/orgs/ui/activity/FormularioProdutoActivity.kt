@@ -2,12 +2,15 @@ package br.com.alura.orgs.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.database.dao.ProdutoDao
 import br.com.alura.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.dialog.FormularioImagemDialog
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity() {
@@ -43,18 +46,21 @@ class FormularioProdutoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        tentaBuscarProdutos()
+        tentaBuscarProduto()
     }
 
-    private fun tentaBuscarProdutos() {
-        produtoDao.buscaPorId(produtoId)?.let {
-            title = "Alterar produto"
-            preencheCampos(it)
+    private fun tentaBuscarProduto() {
+        lifecycleScope.launch {
+            produtoDao.buscaPorId(produtoId).collect {
+                it?.let { produtoEncontrado ->
+                    title = "Alterar produto"
+                    preencheCampos(produtoEncontrado)
+                }
+            }
         }
     }
 
     private fun preencheCampos(produto: Produto) {
-
         url = produto.imagem
         binding.activityFormularioProdutoImagem
             .tentaCarregarImagem(produto.imagem)
@@ -71,10 +77,10 @@ class FormularioProdutoActivity : AppCompatActivity() {
 
         botaoSalvar.setOnClickListener {
             val produtoNovo = criaProduto()
-
-            produtoDao.salva(produtoNovo)
-            finish()
-
+            lifecycleScope.launch {
+                produtoDao.salva(produtoNovo)
+                finish()
+            }
         }
     }
 

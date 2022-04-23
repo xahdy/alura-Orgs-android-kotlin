@@ -2,10 +2,15 @@ package br.com.alura.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.databinding.ActivityListaProdutosActivityBinding
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+
 
 class ListaProdutosActivity : AppCompatActivity() {
 
@@ -13,22 +18,32 @@ class ListaProdutosActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityListaProdutosActivityBinding.inflate(layoutInflater)
     }
+    private val produtoDao by lazy {
+        val db = AppDatabase.instancia(this)
+        db.produtoDao()
+    }
+    private val usuarioDao by lazy {
+        AppDatabase.instancia(this).usuarioDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
+        lifecycleScope.launch {
+            launch {
+                produtoDao.buscaTodos().collect { produtos ->
+                    adapter.atualiza(produtos)
+                }
+            }
+            intent.getStringExtra("CHAVE_USUARIO_ID")?.let { usuarioId ->
+                usuarioDao.buscaPorId(usuarioId).collect {
+                    Log.i("Lista produto", "onCreate: $it")
+                }
 
-
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val db = AppDatabase.instancia(this)
-        val produtoDao = db.produtoDao()
-        adapter.atualiza(produtoDao.buscaTodos())
+            }
+        }
     }
 
     private fun configuraFab() {

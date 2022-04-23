@@ -8,9 +8,9 @@
         android:title="Editar"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/menu_detalhes_produto_remover"
-        android:icon="@drawable/ic_action_delete"
+    <item android:id="@+id/menu_detalhes_produto_remover"
         android:title="Remover"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_action_remover"
+        app:showAsAction="ifRoom"/>
+
 </menu>
