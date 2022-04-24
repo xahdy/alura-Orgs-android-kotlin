@@ -19,8 +19,8 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
         AppDatabase.instancia(this).usuarioDao()
     }
 
-    private var _usuario: MutableStateFlow<Usuario?> = MutableStateFlow(null)
-    protected var usuario: StateFlow<Usuario?> = _usuario
+    private val _usuario: MutableStateFlow<Usuario?> = MutableStateFlow(null)
+    protected val usuario: StateFlow<Usuario?> = _usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +37,12 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun buscaUsuario(usuarioId: String) {
-        _usuario.value = usuarioDao
+    private suspend fun buscaUsuario(usuarioId: String): Usuario? {
+        return usuarioDao
             .buscaPorId(usuarioId)
-            .firstOrNull()
+            .firstOrNull().also {
+                _usuario.value = it
+            }
     }
 
     protected suspend fun deslogaUsuario() {
@@ -50,7 +52,7 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
     }
 
     private fun vaiParaLogin() {
-        vaiPara(LoginActivity::class.java){
+        vaiPara(LoginActivity::class.java) {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         }
         finish()

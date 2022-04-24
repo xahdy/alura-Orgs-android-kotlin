@@ -13,15 +13,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211ff0b3-f309-47c3-b4be-28c62296decc" name="Default Changelist" comment="Logout do usuário.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/UsuarioBaseActivity.kt" afterDir="false" />
+    <list default="true" id="211ff0b3-f309-47c3-b4be-28c62296decc" name="Default Changelist" comment="Refatorando código">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/extensions/ContextExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/extensions/ContextExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/FormularioCadastroUsuarioActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/FormularioCadastroUsuarioActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/AppDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/Migrations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/Migrations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/dao/ProdutoDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/database/dao/ProdutoDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/model/Produto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/model/Produto.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/FormularioProdutoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/FormularioProdutoActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/ListaProdutosActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/ListaProdutosActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/UsuarioBaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/alura/orgs/ui/activity/UsuarioBaseActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650755576721</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refatorando código">
+      <created>1650763661677</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650763661677</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,6 +294,7 @@
     <MESSAGE value="Cadastro e login com usuário." />
     <MESSAGE value="Utilizando preferences" />
     <MESSAGE value="Logout do usuário." />
-    <option name="LAST_COMMIT_MESSAGE" value="Logout do usuário." />
+    <MESSAGE value="Refatorando código" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorando código" />
   </component>
 </project>
